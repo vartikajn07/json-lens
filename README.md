@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JSON Lens
 
-## Getting Started
+A developer productivity tool that transforms deeply nested JSON into interactive, node-based diagrams for faster understanding and debugging.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project visualizes complex JSON structures as an interactive graph using **React** and **React Flow**, making it easier to explore deeply nested data and debug large API responses.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It is designed as a **developer-first debugging and productivity tool**, not a JSON editor.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Recursive JSON parser to handle deeply nested objects and arrays
+- Interactive node-based visualization using React Flow
+- Improved node spacing and layout using Dagre.js
+- Hover-based ancestor edge highlighting for structural context
+- Debounced search and filter nodes based on string matching (keys and values)
+- Keyword highlighting inside nodes
+- Click any node to copy its full path to clipboard
 
-## Learn More
+## Use Cases
 
-To learn more about Next.js, take a look at the following resources:
+### API Debugging
+Visualize heavily nested API responses by visually tracing hierarchy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Schema Design
+Helps devs evaluate whether a schema is clean or becoming overly nested before committing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Data Analysis
+Makes complex data structures understandable for non-technical stakeholders by replacing raw json with a visual diagram.
 
-## Deploy on Vercel
+### Developer Onboarding
+Allows new developers to understand the “shape” of a project’s data without digging through large documentations.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Visualization:
+- React
+- React Flow
+- Dagre
+- TypeScript
+### Styling: 
+- TailwindCSS
+### Code Editor:
+- @monaco-editor/react.
+
+
+**Recursive parser function** is the brain of this app. Using Depth-first approach, every time we encounter an object or an array, we dive deeper, creating a new node and drawing a line (edge) back to its parent.
+
+### Credit
+This project is highly inspired by [JSON Crack](https://github.com/AykutSarac/jsoncrack.com)
